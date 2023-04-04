@@ -1,0 +1,669 @@
+openapi: 3.0.0
+info:
+  title: E_commerce APi
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:5555'
+components:
+  securitySchemes:
+    noauthAuth:
+      type: http
+      scheme: noauth
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: User Auth
+  - name: Category
+  - name: Cart
+  - name: product
+  - name: Product image
+  - name: Order
+paths:
+  /api/register:
+    post:
+      tags:
+        - User Auth
+      summary: register
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: vimal patel
+                email:
+                  type: string
+                  example: admin1@gmail.com
+                password:
+                  type: integer
+                  example: '123456'
+                confirm_password:
+                  type: integer
+                  example: '123456'
+                phone_no:
+                  type: integer
+                  example: '1234567854'
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/login:
+    post:
+      tags:
+        - User Auth
+      summary: login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: admin1@gmail.com
+                password:
+                  type: integer
+                  example: '123456'
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/logout:
+    post:
+      tags:
+        - User Auth
+      summary: logout
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/profile:
+    get:
+      tags:
+        - User Auth
+      summary: profile
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - User Auth
+      summary: update profile
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                name:
+                  type: string
+                  example: vimal user
+                role:
+                  type: string
+                  example: admin
+                phone_no:
+                  type: integer
+                  example: '4444111521'
+                password:
+                  type: string
+                  example: password
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/category/list:
+    get:
+      tags:
+        - Category
+      summary: category list
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/category/add:
+    post:
+      tags:
+        - Category
+      summary: add category
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: sdfedferfdew
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/category/update/5:
+    put:
+      tags:
+        - Category
+      summary: update category
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                name:
+                  type: string
+                  example: Laptop
+                pass:
+                  type: string
+                  example: dds
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/category/delete/5:
+    delete:
+      tags:
+        - Category
+      summary: delete category
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cart/list:
+    get:
+      tags:
+        - Cart
+      summary: cart list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: image/png
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/add/cart:
+    post:
+      tags:
+        - Cart
+      summary: add to cart
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+                  example: '9'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/remove/cart:
+    put:
+      tags:
+        - Cart
+      summary: remove from cart
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                product_id:
+                  type: integer
+                  example: '9'
+                pass:
+                  type: string
+                  example: dds
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product:
+    get:
+      tags:
+        - product
+      summary: product list
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '2'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - product
+      summary: add product
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: fridge no 45
+                description:
+                  type: string
+                  example: fridge 45 description
+                price:
+                  type: integer
+                  example: '256'
+                categories_id:
+                  type: integer
+                  example: '4'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/5:
+    put:
+      tags:
+        - product
+      summary: update product
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                name:
+                  type: string
+                  example: firdge 2
+                description:
+                  type: string
+                  example: changed
+                price:
+                  type: integer
+                  example: '2055'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/8:
+    delete:
+      tags:
+        - product
+      summary: delete product
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/400:
+    get:
+      tags:
+        - product
+      summary: product detail
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/image:
+    post:
+      tags:
+        - Product image
+      summary: add product image
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                product_id:
+                  type: integer
+                  example: '9'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: ''
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/image/10:
+    post:
+      tags:
+        - Product image
+      summary: update product  image
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+                  example: '2'
+                image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: multipart/form-data
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/image/11:
+    delete:
+      tags:
+        - Product image
+      summary: delete product  image
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/place/order:
+    post:
+      tags:
+        - Order
+      summary: place order
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/list:
+    get:
+      tags:
+        - Order
+      summary: order list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/detail/6:
+    get:
+      tags:
+        - Order
+      summary: order detail
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/manage/order/6:
+    put:
+      tags:
+        - Order
+      summary: Manage Order
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                status:
+                  type: string
+                  example: accept
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
