@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Patel - Portfolio</title>
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Deep Patel</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container text-center">
+      <h1 class="display-4">Hello, I'm Deep Patel</h1>
+      <p class="lead">Trainee Software Developer at Technomark</p>
+      <a href="#about" class="btn btn-primary btn-lg">Learn More</a>
+    </div>
+  </section>
+
+  <section id="about" class="bg-light py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">About Me</h2>
+      <div class="row">
+        <div class="col-lg-6">
+        <!-- Profile Image -->
+       <!-- Profile Image -->
+      <img src="https://picsum.photos/300/300?random=1" class="img-fluid rounded-circle mb-4" alt="Profile Image">
+        </div>
+        <div class="col-lg-6">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vulputate nisl sed est accumsan
+            bibendum.
+            In in metus fringilla, ultrices neque a, efficitur ex.</p>
+          <p>Quisque eget felis consequat, semper dui id, fringilla nunc. Vivamus fringilla bibendum diam ut
+            maximus. Sed
+            malesuada a diam at pulvinar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="py-5 wow fadeInUp">
+    <div class="container">
+      <h2 class="mb-4 text-center">
+        <strong><b>Skills</b></strong></h2>
+      <div class="row">
+        <div class="col-lg-6 mx-auto">
+          <div class="skill-buttons">
+            <button class="btn btn-skills">HTML</button>
+            <button class="btn btn-skills">CSS</button>
+            <button class="btn btn-skills">JavaScript</button>
+            <button class="btn btn-skills">Angular</button>
+            <button class="btn btn-skills">TypeScript</button>
+            <button class="btn btn-skills">ASP.NET</button>
+            <button class="btn btn-skills">C#</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+  <section id="projects" class="bg-light py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Projects</h2>
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+        <!-- Project 1 Image -->
+          <img src="https://picsum.photos/500/300?random=2" class="card-img-top" alt="Project 1 Image">
+            <div class="card-body">
+              <h5 class="card-title">Project 1</h5>
+              <p class="card-text">Description of project 1.</p>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <img src="https://picsum.photos/500/300?random=2" class="card-img-top" alt="Project 2 Image">
+            <div class="card-body">
+              <h5 class="card-title">Project 2</h5>
+              <p class="card-text">Description of project 2.</p>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <img src="https://picsum.photos/500/300?random=2" class="card-img-top" alt="Project 3 Image">
+            <div class="card-body">
+              <h5 class="card-title">Project 3</h5>
+              <p class="card-text">Description of project 3.</p>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="bg-dark text-white py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Contact Me</h2>
+      <div class="row">
+        <div class="col-lg-6 mx-auto">
+          <form id="contact-form" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea class="form-control" id="message" rows="5" placeholder="Enter your message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-light btn-block">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="bg-dark text-white text-center py-3">
+    <p>© 2023 Deep Patel. All rights reserved.</p>
+  </footer> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
